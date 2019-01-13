@@ -15,16 +15,22 @@ def get_dominant_color(image, k=4, image_processing_size = None):
     processing time is sped up by working with a smaller image; this can be done with the 
     image_processing_size param which takes a tuple of image dims as input
     """
+    # read in image of interest
+    bgr_image = cv2.imread(image)
+    # convert to HSV; this is a better representation of how we see color
+    hsv_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2HSV)
+    # extract dominant color 
+
     # resize image if new dims provided
     if image_processing_size is not None:
-        image = cv2.resize(image, image_processing_size, interpolation = cv2.INTER_AREA)
+        hsv_image = cv2.resize(hsv_image, image_processing_size, interpolation = cv2.INTER_AREA)
     
     # reshape the image to be a list of pixels
-    image = image.reshape((image.shape[0] * image.shape[1], 3))
+    hsv_image = hsv_image.reshape((hsv_image.shape[0] * hsv_image.shape[1], 3))
 
     # cluster the pixels and assign labels
     clt = KMeans(n_clusters = k)
-    labels = clt.fit_predict(image)
+    labels = clt.fit_predict(hsv_image)
 
     # count labels to find most popular
     label_counts = Counter(labels)
