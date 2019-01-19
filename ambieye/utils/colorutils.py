@@ -8,7 +8,7 @@ import numpy as np
 
 LOGGER = logging.getLogger("root")
 
-def get_dominant_color(bgr_image, k=4, image_processing_size = None):
+def get_dominant_color(bgr_image, brightness=0, k=4, image_processing_size = None):
     """
     takes an image as input and returns the dominant color as an rgb array
     
@@ -20,6 +20,14 @@ def get_dominant_color(bgr_image, k=4, image_processing_size = None):
     """
     # convert to HSV; this is a better representation of how we see color
     hsv_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2HSV)
+
+    h, s, v = cv2.split(hsv_image)
+
+    lim = brightness
+    v[v < lim] = 0
+    v[v >= lim] -= brightness
+
+    hsv_image = cv2.merge((h, s, v))
 
     # resize image if new dims provided
     if image_processing_size is not None:

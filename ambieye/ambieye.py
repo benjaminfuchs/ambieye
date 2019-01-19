@@ -21,6 +21,7 @@ def get_args(arguments):
     parser.add_argument("-k", "--num-means", default=4, type=int)
     parser.add_argument("-i", "--processing-size", default=25, type=int)
     parser.add_argument("-g", "--gamma", default=1, type=float)
+    parser.add_argument("-b", "--brightness", default=0, type=int)
     args.add_log_level(parser)
     return parser.parse_args(arguments)
 
@@ -43,7 +44,7 @@ def blink():
     time.sleep(0.5)
     LedThread.send_color((0, 0, 0))
 
-def loop(num_means, processing_size, gamma, debug):
+def loop(brightness, num_means, processing_size, gamma, debug):
     old_x, old_y, old_w, old_h = 0, 0, 0, 0
     count = 0
 
@@ -86,7 +87,7 @@ def loop(num_means, processing_size, gamma, debug):
         if debug:
             cv2.imwrite("debug_screen.jpg" , crop_img)
         color = colorutils.get_dominant_color(crop_img, \
-            num_means, processing_size)
+            brightness, num_means, processing_size)
         led_thread.set_color(color)
 
         time.sleep(0.033)
@@ -105,7 +106,7 @@ def main(argv):
     if debug:
         debug_image()
 
-    loop(arguments.num_means, arguments.processing_size, arguments.gamma, debug)
+    loop(arguments.brightness, arguments.num_means, arguments.processing_size, arguments.gamma, debug)
 
 if __name__ == "__main__":
     sys.exit(main(sys.argv[1:]))
