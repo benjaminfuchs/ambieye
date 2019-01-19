@@ -46,5 +46,8 @@ class LedThread:
         color = [min(255, max(10, color[0] * 1.1)), min(255, max(10, color[1] * 1.1)), min(255, max(10, color[2] * 1.1))]
         hex_color = colorutils.to_hex_color_string(color)
         LOGGER.debug("hex_color: %s", hex_color)
-        r = requests.post("http://192.168.178.23:5000/save_settings", json={"led.brightness": 1, "led.color": hex_color})
+        try:
+            r = requests.post("http://192.168.178.23:5000/save_settings", json={"led.brightness": 1, "led.color": hex_color})
+        except requests.exceptions.ConnectionError as exception:
+            LOGGER.error("Could not send color! (%s)", str(exception))
         LOGGER.debug("status: %s", r.status_code)

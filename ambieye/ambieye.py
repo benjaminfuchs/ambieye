@@ -86,8 +86,11 @@ def loop(brightness, num_means, processing_size, gamma, debug):
         crop_img = image[y:y+h, x:x+w]
         if debug:
             cv2.imwrite("debug_screen.jpg" , crop_img)
-        color = colorutils.get_dominant_color(crop_img, \
-            brightness, num_means, processing_size)
+        try:
+            color = colorutils.get_dominant_color(crop_img, \
+                brightness, num_means, processing_size)
+        except Exception as exception:
+            LOGGER.error("Could not get dominant color! (%s)", str(exception))
         led_thread.set_color(color)
 
         time.sleep(0.033)
