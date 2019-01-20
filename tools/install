@@ -9,7 +9,7 @@
 #
 # --------------------------------------------------------------------------
 
-PACKAGES="python-pip python-blinkt python-simplejson python-bottle"
+PACKAGES="python-pip python-simplejson python-bottle python-opencv"
 PROJECT="ambieye"
 
 # --- basic packages   ------------------------------------------------------
@@ -89,14 +89,15 @@ configure_system() {
   fi
 
   # create user
-  if ! grep -q "nerdc" /etc/passwd; then
-    echo -e "[INFO] create system-user nerdc:nerdc" 2>&1
-    groupadd -r nerdc
+  if ! grep -q "ambieye" /etc/passwd; then
+    echo -e "[INFO] create system-user ambieye:ambieye" 2>&1
+    groupadd -r ambieye
     adduser --disabled-login --gecos "" --system --group \
-                                        --home /var/lib/ambieye nerdc
-    usermod -a -G gpio,i2c nerdc
+                                        --home /var/lib/ambieye ambieye
+    usermod -a -G gpio,i2c,video ambieye
   fi
-  chown -R nerdc:nerdc /var/lib/ambieye
+  chown -R ambieye:ambieye /var/lib/ambieye
+  chown -R ambieye:ambieye /usr/local/lib/python2.7/site-packages/ncolors/web
 }
 
 # --- activate service   ----------------------------------------------------

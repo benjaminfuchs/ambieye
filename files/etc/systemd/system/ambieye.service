@@ -17,7 +17,7 @@ After=multi-user.target
 
 [Service]
 Type=simple
-User=nerdc
+User=ambieye
 ExecStart=/usr/local/sbin/ambieye.py
 
 [Install]

@@ -37,7 +37,7 @@ class Msg(object):
       self._syslog = True
 
     if self._syslog:
-      syslog.openlog("nerd-alarmclock")
+      syslog.openlog("ambieye")
 
   def msg(self,text):
     """ write message to the system log """
@@ -76,7 +76,11 @@ def start_threads(settings):
     webThread = ncolors.WebThread.WebThread(settings)
     threads.append(webThread)
 
-  dominantColorThread = ncolors.DominantColorThread.DominantColorThread(settings)
+  streamThread = ncolors.PiVideoStream.PiVideoStream(settings)
+  threads.append(streamThread)
+  screenThread = ncolors.ScreenThread.ScreenThread(settings, streamThread)
+  threads.append(screenThread)
+  dominantColorThread = ncolors.DominantColorThread.DominantColorThread(settings, streamThread, screenThread)
   threads.append(dominantColorThread)
 
   map(threading.Thread.start, threads)
