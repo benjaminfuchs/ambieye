@@ -76,6 +76,9 @@ def start_threads(settings):
     webThread = ncolors.WebThread.WebThread(settings)
     threads.append(webThread)
 
+  dominantColorThread = ncolors.DominantColorThread.DominantColorThread(settings)
+  threads.append(dominantColorThread)
+
   map(threading.Thread.start, threads)
   return threads
 
@@ -109,7 +112,7 @@ locale.setlocale(locale.LC_ALL, '')
 # read configuration
 parser = ConfigParser.RawConfigParser()
 parser.optionxform = str
-parser.read('/etc/nerd-colors.conf')
+parser.read('/etc/ambieye.conf')
 
 # initialize system
 settings = init(parser)

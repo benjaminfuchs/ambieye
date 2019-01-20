@@ -1,4 +1,4 @@
-nerd-colors
+ambieye
 ===========
 
 A Pi-Zero W based led light with an web-interface to control the color and brightness.
@@ -66,8 +66,8 @@ As a prerequisite, you need a basic install of Raspbian Stretch-Lite.
 
 Use the following commands to install the software:
 
-    git clone https://github.com/benjaminfuchs/nerd-colors.git
-    cd nerd-colors
+    git clone https://github.com/benjaminfuchs/ambieye.git
+    cd ambieye
     sudo tools/install
 
 This will pull-in all dependencies, install the software, create technical
@@ -81,11 +81,11 @@ Upgrade
 Before uprading an existing system, you should stop the relevant system
 services:
 
-    sudo systemctl stop nerd-colors.service
+    sudo systemctl stop ambieye.service
 
 Then run a normal install like documented above. After installation, you
-should update you existing `/etc/nerd-colors.conf` from the file
-`/etc/nerd-colors.conf.nerd-colors`.
+should update you existing `/etc/ambieye.conf` from the file
+`/etc/ambieye.conf.ambieye`.
 
 
 Configuration
@@ -93,16 +93,16 @@ Configuration
 
 ### System services ###
 
-Edit the file `/etc/nerd-colors.conf` to configure the systemd-service
+Edit the file `/etc/ambieye.conf` to configure the systemd-service
 running the clock.
 
 
 ### Manual configuration ###
 
-Program defaults are in the file `/var/lib/nerd-colors/defaults.json`.
+Program defaults are in the file `/var/lib/ambieye/defaults.json`.
 You should not edit this file directly (unless you know what you are
 doing). After first run, the settings are saved in
-`/var/lib/nerd-colors/settings.json`. You can edit this file
+`/var/lib/ambieye/settings.json`. You can edit this file
 manually, but you should make sure the clock-service is stopped before
 doing so (it will be otherwise overwritten).
 

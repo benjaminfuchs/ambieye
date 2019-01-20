@@ -5,8 +5,8 @@ Architecture
 ------------
 
 The firmware for the alarmclock is implemented in python. The main program
-is the script `/usr/local/sbin/nerd-colors.py`, which is started by
-the systemd-service defined in `/etc/systemd/system/nerd-colors.service`.
+is the script `/usr/local/sbin/ambieye.py`, which is started by
+the systemd-service defined in `/etc/systemd/system/ambieye.service`.
 
 
 The main script does not contain much logic. It mainly creates and loads

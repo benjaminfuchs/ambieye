@@ -1,7 +1,8 @@
-{"_comment0": "Default settings for nerd-colors",
+{"_comment0": "Default settings for ambieye",
  "_comment1": "Don't change this file",
  "_comment2": "change settings.json instead!",
 
+ "led.status"      : 0,
  "led.brightness"  : 1,
  "led.color"       : "#00FF00"
 }

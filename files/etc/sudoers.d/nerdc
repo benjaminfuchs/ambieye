@@ -1,1 +1,1 @@
-nerdc ALL=(ALL) NOPASSWD: /sbin/halt, /sbin/reboot, /bin/systemctl restart nerd-colors.service
+nerdc ALL=(ALL) NOPASSWD: /sbin/halt, /sbin/reboot, /bin/systemctl restart ambieye.service

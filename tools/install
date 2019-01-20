@@ -5,12 +5,12 @@
 # Author: Benjamin Fuchs
 # License: GPL3
 #
-# Website: https://github.com/benjaminfuchs/nerd-colors
+# Website: https://github.com/benjaminfuchs/ambieye
 #
 # --------------------------------------------------------------------------
 
 PACKAGES="python-pip python-blinkt python-simplejson python-bottle"
-PROJECT="nerd-colors"
+PROJECT="ambieye"
 
 # --- basic packages   ------------------------------------------------------
 
@@ -93,10 +93,10 @@ configure_system() {
     echo -e "[INFO] create system-user nerdc:nerdc" 2>&1
     groupadd -r nerdc
     adduser --disabled-login --gecos "" --system --group \
-                                        --home /var/lib/nerd-colors nerdc
+                                        --home /var/lib/ambieye nerdc
     usermod -a -G gpio,i2c nerdc
   fi
-  chown -R nerdc:nerdc /var/lib/nerd-colors
+  chown -R nerdc:nerdc /var/lib/ambieye
 }
 
 # --- activate service   ----------------------------------------------------
