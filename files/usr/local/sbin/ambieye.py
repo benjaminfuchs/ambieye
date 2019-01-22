@@ -61,8 +61,6 @@ def init(parser):
   settings     = ncolors.Settings.Settings(parser)
   settings.log = Msg(settings.get_value('GLOBAL','debug',0))
   settings.load()
-
-  settings.leds    = ncolors.LedController.LedController(settings)
   return settings
 
 # --- start all threads   --------------------------------------------------
@@ -82,6 +80,8 @@ def start_threads(settings):
   threads.append(screenThread)
   dominantColorThread = ncolors.DominantColorThread.DominantColorThread(settings, streamThread, screenThread)
   threads.append(dominantColorThread)
+  ledControllerThread = ncolors.LedControllerThread.LedControllerThread(settings)
+  threads.append(ledControllerThread)
 
   map(threading.Thread.start, threads)
   return threads
