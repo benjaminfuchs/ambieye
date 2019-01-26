@@ -9,7 +9,8 @@
 #
 # --------------------------------------------------------------------------
 
-PACKAGES="python-pip python-simplejson python-bottle python-opencv python-unicornhat"
+PACKAGES="python-pip"
+PYTHON_PACKAGES="simplejson bottle opencv unicornhat"
 PROJECT="nerd-colors"
 
 # --- basic packages   ------------------------------------------------------
@@ -29,6 +30,7 @@ install_packages() {
     echo -e "[INFO] installing additional packages" 2>&1
     apt-get update
     apt-get -y install $PACKAGES
+    pip install $PYTHON_PACKAGES
   fi
 
   pip list 2>/dev/null | grep -q telepot || pip install telepot
