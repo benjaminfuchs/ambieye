@@ -9,7 +9,7 @@
 #
 # --------------------------------------------------------------------------
 
-PACKAGES="python-pip python-simplejson python-bottle python-opencv"
+PACKAGES="python-pip python-simplejson python-bottle python-opencv python-unicornhat"
 PROJECT="nerdc"
 
 # --- basic packages   ------------------------------------------------------
