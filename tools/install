@@ -30,6 +30,7 @@ install_packages() {
     echo -e "[INFO] installing additional packages" 2>&1
     apt-get update
     apt-get -y install $PACKAGES
+    pip install --upgrade pip
     pip install $PYTHON_PACKAGES
   fi
 }
