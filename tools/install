@@ -32,8 +32,6 @@ install_packages() {
     apt-get -y install $PACKAGES
     pip install $PYTHON_PACKAGES
   fi
-
-  pip list 2>/dev/null | grep -q telepot || pip install telepot
 }
 
 # --- install specific files   ----------------------------------------------
