@@ -10,7 +10,7 @@
 # --------------------------------------------------------------------------
 
 PACKAGES="python-pip python-simplejson python-bottle python-opencv python-unicornhat"
-PROJECT="nerdc"
+PROJECT="nerd-colors"
 
 # --- basic packages   ------------------------------------------------------
 
