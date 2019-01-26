@@ -37,7 +37,7 @@ class Msg(object):
       self._syslog = True
 
     if self._syslog:
-      syslog.openlog("ambieye")
+      syslog.openlog("nerdc")
 
   def msg(self,text):
     """ write message to the system log """
@@ -116,7 +116,7 @@ locale.setlocale(locale.LC_ALL, '')
 # read configuration
 parser = ConfigParser.RawConfigParser()
 parser.optionxform = str
-parser.read('/etc/ambieye.conf')
+parser.read('/etc/nerd-colors.conf')
 
 # initialize system
 settings = init(parser)

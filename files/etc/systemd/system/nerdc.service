@@ -1,13 +1,13 @@
 # --------------------------------------------------------------------------
-# Systemd service Definition for ambieye.service.
+# Systemd service Definition for nerdc.service.
 #
-# The service just starts the script /usr/local/sbin/ambieye.py
-# Please edit /etc/ambieye.conf to configure the script.
+# The service just starts the script /usr/local/sbin/nerdc.py
+# Please edit /etc/nerd-colors.conf to configure the script.
 #
 # Author: Benjamin Fuchs
 # License: GPL3
 #
-# Website: https://github.com/benjaminfuchs/ambieye
+# Website: https://github.com/benjaminfuchs/nerdc
 #
 # --------------------------------------------------------------------------
 
@@ -17,8 +17,8 @@ After=multi-user.target
 
 [Service]
 Type=simple
-User=ambieye
-ExecStart=/usr/local/sbin/ambieye.py
+User=nerdc
+ExecStart=/usr/local/sbin/nerd-colors.py
 
 [Install]
 WantedBy=multi-user.target

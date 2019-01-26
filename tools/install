@@ -5,12 +5,12 @@
 # Author: Benjamin Fuchs
 # License: GPL3
 #
-# Website: https://github.com/benjaminfuchs/ambieye
+# Website: https://github.com/benjaminfuchs/nerdc
 #
 # --------------------------------------------------------------------------
 
 PACKAGES="python-pip python-simplejson python-bottle python-opencv"
-PROJECT="ambieye"
+PROJECT="nerdc"
 
 # --- basic packages   ------------------------------------------------------
 
@@ -89,15 +89,15 @@ configure_system() {
   fi
 
   # create user
-  if ! grep -q "ambieye" /etc/passwd; then
-    echo -e "[INFO] create system-user ambieye:ambieye" 2>&1
-    groupadd -r ambieye
+  if ! grep -q "nerdc" /etc/passwd; then
+    echo -e "[INFO] create system-user nerdc:nerdc" 2>&1
+    groupadd -r nerdc
     adduser --disabled-login --gecos "" --system --group \
-                                        --home /var/lib/ambieye ambieye
-    usermod -a -G gpio,i2c,video ambieye
+                                        --home /var/lib/nerdc nerdc
+    usermod -a -G gpio,i2c,video nerdc
   fi
-  chown -R ambieye:ambieye /var/lib/ambieye
-  chown -R ambieye:ambieye /usr/local/lib/python2.7/site-packages/ncolors/web
+  chown -R nerdc:nerdc /var/lib/nerdc
+  chown -R nerdc:nerdc /usr/local/lib/python2.7/site-packages/ncolors/web
 }
 
 # --- activate service   ----------------------------------------------------
