@@ -58,7 +58,7 @@ class Msg(object):
 def init(parser):
   """ Initialize objects """
 
-  settings     = ncolors.Settings.Settings(parser)
+  settings     = nambilight.Settings.Settings(parser)
   settings.log = Msg(settings.get_value('GLOBAL','debug',0))
   settings.load()
   return settings
@@ -71,16 +71,16 @@ def start_threads(settings):
   threads = []
 
   if settings.get_value('WEB','active','1') != '0':
-    webThread = ncolors.WebThread.WebThread(settings)
+    webThread = nambilight.WebThread.WebThread(settings)
     threads.append(webThread)
 
-  streamThread = ncolors.PiVideoStream.PiVideoStream(settings)
+  streamThread = nambilight.PiVideoStream.PiVideoStream(settings)
   threads.append(streamThread)
-  screenThread = ncolors.ScreenThread.ScreenThread(settings, streamThread)
+  screenThread = nambilight.ScreenThread.ScreenThread(settings, streamThread)
   threads.append(screenThread)
-  dominantColorThread = ncolors.DominantColorThread.DominantColorThread(settings, streamThread, screenThread)
+  dominantColorThread = nambilight.DominantColorThread.DominantColorThread(settings, streamThread, screenThread)
   threads.append(dominantColorThread)
-  ledControllerThread = ncolors.LedControllerThread.LedControllerThread(settings)
+  ledControllerThread = nambilight.LedControllerThread.LedControllerThread(settings)
   threads.append(ledControllerThread)
 
   map(threading.Thread.start, threads)
