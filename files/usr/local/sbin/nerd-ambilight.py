@@ -14,7 +14,7 @@
 import select, os, sys, syslog, signal, time, locale
 import ConfigParser, threading
 
-import ncolors
+import nambilight
 
 # --- helper class for logging to syslog/stderr   --------------------------
 
