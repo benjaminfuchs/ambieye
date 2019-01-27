@@ -1,13 +1,13 @@
 # --------------------------------------------------------------------------
-# Systemd service Definition for nerdc.service.
+# Systemd service Definition for nerda.service.
 #
-# The service just starts the script /usr/local/sbin/nerdc.py
+# The service just starts the script /usr/local/sbin/nerda.py
 # Please edit /etc/nerd-colors.conf to configure the script.
 #
 # Author: Benjamin Fuchs
 # License: GPL3
 #
-# Website: https://github.com/benjaminfuchs/nerdc
+# Website: https://github.com/benjaminfuchs/nerda
 #
 # --------------------------------------------------------------------------
 
@@ -17,8 +17,8 @@ After=multi-user.target
 
 [Service]
 Type=simple
-User=nerdc
-ExecStart=/usr/local/sbin/nerd-colors.py
+User=nerda
+ExecStart=/usr/local/sbin/nerd-ambilight.py
 
 [Install]
 WantedBy=multi-user.target

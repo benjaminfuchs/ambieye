@@ -14,22 +14,22 @@ sudo chown 1000:1000 /dev/gpiomem
 This will make `/dev/gpiomem` accessible from within the container which can be started with:
 
 ```
-docker run -it -v nerdc_home:/var/nerdc_home --device /dev/snd --device /dev/gpiomem -t benjaminfuchs/rpi-nerd-alarmclock /bin/bash
+docker run -it -v nerda_home:/var/nerda_home --device /dev/snd --device /dev/gpiomem -t benjaminfuchs/rpi-nerd-alarmclock /bin/bash
 ```
 
 This will start an docker container that already has all set up for the
-nerd-alarmclock. The settings should be store in /var/nerdc_home. The
-command automatically creates a 'nerdc_home' docker volume, that will
+nerd-alarmclock. The settings should be store in /var/nerda_home. The
+command automatically creates a 'nerda_home' docker volume, that will
 survive container stop/restart/deletion. The cointainer has a script called
-`start-nerdc.sh` to manually start the nerd-alarmclock. If you manually created your
+`start-nerda.sh` to manually start the nerd-alarmclock. If you manually created your
 `settings.json` you can use following command to only start the container with
 the saved settings:
 
 ```
-docker run -v nerdc_home:/var/nerdc_home --device /dev/snd --device /dev/gpiomem -t benjaminfuchs/rpi-nerd-alarmclock
+docker run -v nerda_home:/var/nerda_home --device /dev/snd --device /dev/gpiomem -t benjaminfuchs/rpi-nerd-alarmclock
 ```
 
-Avoid using a bind mount from a folder on host into `/var/nerdc_home`, as this
+Avoid using a bind mount from a folder on host into `/var/nerda_home`, as this
 might result in file permission issue. If you _really_ need to bind mount
 jenkins_home, ensure that directory on host is accessible by the jenkins user in
 container (jenkins user - uid 1000) or use `-u some_other_user` parameter with

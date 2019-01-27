@@ -11,15 +11,15 @@ RUN apt-get update && apt-get install -y \
     python-simplejson \
     python-bottle
 
-ARG user=nerdc
-ARG group=nerdc
+ARG user=nerda
+ARG group=nerda
 ARG uid=1000
 ARG gid=1000
-ENV HOME /var/nerdc_home
+ENV HOME /var/nerda_home
 
 # Add user user
 RUN groupadd -g ${gid} ${group} \
-    && useradd -d "$HOME" -u ${uid} -g ${gid} -G audio,i2c,nerdc,video -m -s /bin/bash ${user}
+    && useradd -d "$HOME" -u ${uid} -g ${gid} -G audio,i2c,nerda,video -m -s /bin/bash ${user}
 
 VOLUME "$HOME"
 
@@ -42,4 +42,4 @@ RUN chown -R ${user} "$HOME" \
 
 WORKDIR "$HOME"
 USER ${user}
-CMD ["/bin/bash", "start-nerdc.sh"]
+CMD ["/bin/bash", "start-nerda.sh"]

@@ -37,7 +37,7 @@ class Msg(object):
       self._syslog = True
 
     if self._syslog:
-      syslog.openlog("nerdc")
+      syslog.openlog("nerda")
 
   def msg(self,text):
     """ write message to the system log """

@@ -5,13 +5,13 @@
 # Author: Benjamin Fuchs
 # License: GPL3
 #
-# Website: https://github.com/benjaminfuchs/nerdc
+# Website: https://github.com/benjaminfuchs/nerda
 #
 # --------------------------------------------------------------------------
 
 PACKAGES="python-pip"
-PYTHON_PACKAGES="simplejson bottle opencv-python unicornhat"
-PROJECT="nerd-colors"
+PYTHON_PACKAGES="simplejson bottle opencv-python"
+PROJECT="nerd-ambilight"
 
 # --- basic packages   ------------------------------------------------------
 
@@ -90,15 +90,15 @@ configure_system() {
   fi
 
   # create user
-  if ! grep -q "nerdc" /etc/passwd; then
-    echo -e "[INFO] create system-user nerdc:nerdc" 2>&1
-    groupadd -r nerdc
+  if ! grep -q "nerda" /etc/passwd; then
+    echo -e "[INFO] create system-user nerda:nerda" 2>&1
+    groupadd -r nerda
     adduser --disabled-login --gecos "" --system --group \
-                                        --home /var/lib/nerdc nerdc
-    usermod -a -G gpio,i2c,video nerdc
+                                        --home /var/lib/nerda nerda
+    usermod -a -G gpio,i2c,video nerda
   fi
-  chown -R nerdc:nerdc /var/lib/nerdc
-  chown -R nerdc:nerdc /usr/local/lib/python2.7/site-packages/ncolors/web
+  chown -R nerda:nerda /var/lib/nerda
+  chown -R nerda:nerda /usr/local/lib/python2.7/site-packages/nambilight/web
 }
 
 # --- activate service   ----------------------------------------------------
