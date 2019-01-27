@@ -4,5 +4,7 @@
 
  "led.status"      : 0,
  "led.brightness"  : 1,
- "led.color"       : "#00FF00"
+ "led.color"       : "#00FF00",
+ "led.urls"        : ["led-0", "led-1", "led-2"],
+ "led.port"        : 5000
 }
